@@ -1,3 +1,4 @@
+// Input Setup
 let input = {
     mouseX: {
         start: 0,
@@ -10,30 +11,34 @@ let input = {
         height: 0
     }
 }
-
 input.mouseX.range = input.mouseX.end - input.mouseX.start;
 input.mouseY.range = input.mouseY.end - input.mouseY.start;
-console.log(input.mouseY.range)
+
+// Output Setup
+var output = {
+    x: {
+        start: -100,
+        end: 100,
+        current: 0
+    },
+    y: {}
+}
+output.x.range = output.x.end - output.x.start;
 
 // Fraction Value Code
 let handleMouseMove = (event) => {
+    // Mouse x input
     input.mouseX.current = event.clientX;
     input.mouseX.fraction = (input.mouseX.current - input.mouseX.start) / input.mouseX.range;
 
+    // Mouse Y Input
     input.mouseY.current = event.clientY;
     input.mouseY.fraction = (input.mouseY.current - input.mouseY.start) / input.mouseY.range;
     
-    // This code can be used to add exclude sections you dont want to track by adding divs for example inside the css
-    // if (input.mouseX.fraction > 1) {
-    //     input.mouseX.fraction = 1;
-    // }
-    
-    // if (input.mouseX.fraction < 0) {
-    //     input.mouseX.fraction = 0;
-    // }
-
-    console.log("fraction mouse value for X", input.mouseX.fraction);
-    console.log("fraction mouse value for Y", input.mouseY.fraction);
+    output.x.current = output.x.start + (input.mouseX.fraction * output.x.range);
+    console.log('output.x.current', output.x.current);
+    // console.log("fraction mouse value for X", input.mouseX.fraction);
+    // console.log("fraction mouse value for Y", input.mouseY.fraction);
 }
 
 let handleResize = () => {

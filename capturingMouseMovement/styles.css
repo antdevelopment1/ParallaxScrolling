@@ -2,17 +2,35 @@ body {
     background-color: #B6D4AA;
 }
 
-.block {
-    background-color: #006064;
-    width: 100px;
-    height: 100vh;
+.eye {
+    background-color: white;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -100px;
+    margin-top: -100px;
 }
 
-.block2 {
-    width: 200px;
-    height: 100vh;
-    background-color: #006064;
+.pupil {
+    background-color: black;
+    width: 50px;
+    height: 50px;
     position: absolute;
-    right: 0;
-    top: 0;
+    left: 50%;
+    top: 50%;
+    border-radius: 50%;
+    margin-left: -25px;
+    margin-top: -25px;
+
+}
+
+.eye1 {
+    margin-left: -225px;
+}
+
+.eye2 {
+    margin-left: 25px;
 }
