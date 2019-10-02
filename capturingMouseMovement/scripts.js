@@ -50,9 +50,11 @@ let handleMouseMove = event => {
 
   	// Mouse Output X 
   	output.x.current = output.x.end - input.mouseX.fraction * output.x.range;
+  	output.x.opposite = output.x.start + input.mouseX.fraction * output.x.range;
 
 	// Mouse Output Y
 	output.y.current = output.y.end - input.mouseY.fraction * output.y.range;
+	output.y.opposite = output.y.start + input.mouseY.fraction * output.y.range;
 
 	// To make eyeballs go in the SAME DIRECTION as the mouse you can do...
 	// output.y.current = output.y.start + input.mouseY.fraction * output.y.range;
@@ -60,7 +62,12 @@ let handleMouseMove = event => {
 
 
 	pupilsArray.forEach(function (pupil, i) {
-		pupil.style.transform = 'translate(' + output.x.current + 'px,' + output.y.current + 'px)';
+		if ( i === 0 ) {
+			pupil.style.transform = 'translate(' + output.x.current + 'px,' + output.y.opposite + 'px)';
+		} else {
+			pupil.style.transform = 'translate(' + output.x.opposite + 'px,' + output.y.current + 'px)';
+		}
+
 	})
 
 	console.log(output.y.current, "This is th e outp")
