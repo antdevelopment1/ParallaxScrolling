@@ -62,12 +62,17 @@ let handleMouseMove = event => {
 
 
 	itemsArray.forEach(function (item, i) {
-        item.style.transform = 'translate(' + output.x.current + 'px,' + output.y.current + 'px)';
+        let depth = parseFloat(item.dataset.depth, 10);
+        let itemOutput = {
+            x: output.x.current - (output.x.current * depth),
+            y: output.y.current - (output.y.current * depth)
+        }
+        console.log(i, depth, "depth")
+        item.style.transform = 'translate(' + itemOutput.x + 'px,' + itemOutput.y + 'px)';
 	})
 
 	console.log(output.y.current, "This is th e outp")
     console.log("output.x.current", output.x.current);
-    console.log(output.x.current);
 	// console.log("fraction mouse value for X", input.mouseX.fraction);
 	// console.log("fraction mouse value for Y", input.mouseY.fraction);
 };
