@@ -65,9 +65,11 @@ let handleMouseMove = event => {
         let depth = parseFloat(item.dataset.depth, 10);
         let itemOutput = {
             x: output.x.current - (output.x.current * depth),
-            y: output.y.current - (output.y.current * depth)
+            y: output.y.current - (output.y.current * depth),
+            zIndex: 10000 - (10000 * depth)
         }
         console.log(i, depth, "depth")
+        item.style.zIndex =  itemOutput.zIndex;
         item.style.transform = 'translate(' + itemOutput.x + 'px,' + itemOutput.y + 'px)';
 	})
 
